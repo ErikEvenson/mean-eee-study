@@ -66,6 +66,10 @@ buildConfig.bowerDirectory = path.join(
   'generated/public/bower_components'
 );
 
+buildConfig.browserifyFiles = [
+  path.join(buildConfig.basepath, 'source/public/js/app.js')
+];
+
 /** @param {Array} buildConfig.jsFiles - Combine all js files. */
 buildConfig.jsFiles = [].concat(
   buildConfig.jsBuildFiles,

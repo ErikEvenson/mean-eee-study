@@ -22,13 +22,16 @@ module.exports = function(gulp, config) {
       return b.bundle();
     });
 
-    return gulp.src(path.join(config.build.basepath, 'generated/public/js/app_.js'))
+    // Any file that has a basename ending in '_' should be browserified.
+    return gulp.src(path.join(config.build.basepath, 'generated/public/js/**/*_.js'))
       .pipe(browserified)
       // .pipe(sourcemaps.init({loadMaps: true}))
       //     // Add transformation tasks to the pipeline here.
       //     .pipe(uglify())
       // .pipe(sourcemaps.write('./'))
-      .pipe(rename('app.js'))
+      .pipe(rename(function(path) {
+        path.basename = path.basename.slice(0, -1);
+      }))
       .pipe(gulp.dest('./generated/public/js/'));
   });
 
