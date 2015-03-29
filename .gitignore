@@ -1,3 +1,9 @@
+# Ignore the build directory
+build/
+
+# Ignore the generated directory
+generated/
+
 # Ignore the temp directory
 temp/
 

@@ -19,14 +19,14 @@ function loadConfig(config) {
   // /** @param {Object} config.aws - AWS parameters. */
   // config.aws = require('./config/aws');
 
-  // /** @param {Object} config.build - Build configuration parameters. */
-  // config.build = require('./config/build');
+  /** @param {Object} config.build - Build configuration parameters. */
+  config.build = require('./config/build');
 
-  // * @param {Object} config.env - Secret environment parameters. 
-  // config.env = {};
+  /** @param {Object} config.env - Secret environment parameters. */
+  config.env = {};
 
-  // /** @param {Object} config.pkg - package.json data. */
-  // config.pkg = require('./package.json');
+  /** @param {Object} config.pkg - package.json data. */
+  config.pkg = require('./package.json');
 
   // try {
   //   config.env = require('./config/env');
@@ -51,6 +51,7 @@ config = loadConfig(config);
 process.env.DEBUG = process.env.DEBUG || '*';
 
 // Load tasks
+require('./tasks')(gulp, config);
 // require('./tasks/aws')(gulp, config);
 // require('./tasks/core')(gulp, config);
 // require('./tasks/default')(gulp, config);

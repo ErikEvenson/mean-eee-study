@@ -6,6 +6,11 @@ These are the technologies used in this project.
 
 - [node](http://nodejs.org/) 0.10.33 - 'Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications.'
 
+## bower-installed
+- [angularjs]()
+- [angular-resource]()
+- [bootstrap]()
+
 ## Installed on host
 
 These tools are installed directly on the host.  On a Mac, they are can be installed easily using [homebrew](http://brew.sh/) and [homebrew cask](http://caskroom.io/).
@@ -43,6 +48,7 @@ Local:
 - [express](http://expressjs.com/) 4.9.8 - 'Fast, unopinionated, minimalist web framework for Node.js.'
 - [express-session]()
 - [gulp](http://gulpjs.com/) 3.8.11 - 'The streaming build system.'
+- [gulp-angular-templateCache]
 - [gulp-awspublish](https://github.com/pgherveou/gulp-awspublish) 1.0.6 - 'gulp plugin to publish files to amazon s3.'
 - [gulp-bower](https://github.com/zont/gulp-bower) 0.0.10 - 'Install Bower packages.'
 - [gulp-cached](https://github.com/wearefractal/gulp-cached) 1.0.2 - 'A simple in-memory file cache for gulp.'
