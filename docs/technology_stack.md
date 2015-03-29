@@ -29,14 +29,19 @@ Global:
 
 Local:
 
+- [angular-resource]()
+- [angular-route]()
 - [async](https://github.com/caolan/async) 0.9.0 - 'Async utilities for node and the browser.'
 - [aws-sdk]() 2.1.16 - 'AWS SDK for JavaScript in the browser and Node.js.'
 - [body-parser]() 1.12.0 - ''
 - [chai]()
+- [compression]()
 - [concurrent-transform](https://github.com/segmentio/concurrent-transform) 1.0.0 - 'Add some concurrency to a transform stream.'
+- [connect-flash]()
 - [debug](https://github.com/visionmedia/debug) 2.1.1 - 'Tiny node.js & browser debugging utility for your libraries and applications.'
 - [del](https://github.com/sindresorhus/del) 1.1.1 - 'Delete files/folders using globs.'
 - [express](http://expressjs.com/) 4.9.8 - 'Fast, unopinionated, minimalist web framework for Node.js.'
+- [express-session]()
 - [gulp](http://gulpjs.com/) 3.8.11 - 'The streaming build system.'
 - [gulp-awspublish](https://github.com/pgherveou/gulp-awspublish) 1.0.6 - 'gulp plugin to publish files to amazon s3.'
 - [gulp-bower](https://github.com/zont/gulp-bower) 0.0.10 - 'Install Bower packages.'
@@ -64,11 +69,15 @@ Local:
     "karma-chrome-launcher": "0.1.7",
     "karma-mocha": "0.1.10",
     "karma-phantomjs-launcher": "0.1.4",
+- [lodash]()
 - [main-bower-files]()
 - [map-stream]() 0.0.5 - 'Create a through stream from an asyncronous function.'
     "mocha": "2.1.0",
 - [mongo-utils]() 0.4.5 - 'Friendly interface to mongodump and mongorestore commands.'
 - [mongoose](http://mongoosejs.com/) 3.8.23 - 'Elegant mongodb object modeling for node.js.'
+- [morgan]()
+- [passport]()
+- [passport-local]()
 - [request]() 2.53.0 - 'Simplified HTTP request client.'
 - [underscore](http://underscorejs.org/) 1.8.2 - 'A JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.'
 - [wiredep](https://github.com/taptapship/wiredep) 2.2.2 - 'Wire dependencies to your source code.'
