@@ -8,22 +8,49 @@ var
 buildConfig = {
   basepath: path.join(__dirname, '..'),
 
+  // bowerDirectoy is the path to the bower components directory relative to
+  // the generated directory
+  bowerDirectory: 'public/bower_components',
+
   // build is the path to the build directory
   build: path.join(__dirname, '../build/'),
+
+  // cssClientFiles is an array of paths to css files.
+  // This does not include vendor files.
+  cssClientFiles: [
+    'public/css/**/*.css'
+  ],
 
   // generated is the path to the generated directory
   generated: path.join(__dirname, '../generated/'),
 
   htmlServerFiles: [
-    './source/server/**/*.html'
+    'server/**/*.html'
   ],
 
+  // instances is an object of objects representing different instances of the
+  // application.  Each object has properties for that instance.
+  instances: {
+    development: {
+      awsS3Bucket: null,
+      herokuAppName: null
+    },
+    production: {
+      awsS3Bucket: null,
+      herokuAppName: null
+    },
+    staging: {
+      awsS3Bucket: null,
+      herokuAppName: null
+    }
+  },
+
   jadeClientFiles: [
-    './source/public/views/**/*.jade'
+    'public/views/**/*.jade'
   ],
 
   jadeServerFiles: [
-    './source/server/**/*.jade'
+    'server/**/*.jade'
   ],
 
   // jsBuildFiles is an array of javascript build files that are to be watched
@@ -35,7 +62,7 @@ buildConfig = {
   ],
 
   jsClientFiles: [
-    './source/public/js/**/*.js'
+    'public/js/**/*.js'
   ],
 
   jsNoLintFiles: [
@@ -43,55 +70,51 @@ buildConfig = {
   ],
 
   jsServerFiles: [
-    './source/server/**/*.js'
+    'server/**/*.js'
   ],
 
   // source is the path to the source directory
   source: path.join(__dirname, '../source/'),
 
   templateFiles: [
-    './generated/public/views/**/*.jade'
+    'public/views/**/*.jade'
   ],
 
   wiredepFiles: [
-    './source/server/views/includes/cssBlock.jade',
-    './source/server/views/includes/jsBlock.jade'
+    'server/views/includes/cssBlock.jade',
+    'server/views/includes/jsBlock.jade'
   ],
 
   end: 'end' // Handles terminating comma errors...
 };
 
-buildConfig.bowerDirectory = path.join(
-  buildConfig.basepath,
-  'generated/public/bower_components'
-);
-
 buildConfig.browserifyFiles = [
-  path.join(buildConfig.basepath, 'source/public/js/app.js')
+  'public/js/app.js'
 ];
 
 /** @param {Array} buildConfig.jsFiles - Combine all js files. */
 buildConfig.jsFiles = [].concat(
-  buildConfig.jsBuildFiles,
+  // buildConfig.jsBuildFiles,
   buildConfig.jsClientFiles,
   buildConfig.jsServerFiles
 );
 
 /** @param {Array} buildConfig.lintFiles - Create list of lintable jsfiles. */
-buildConfig.jsLintFiles = [].concat(
-  buildConfig.jsFiles,
-  buildConfig.jsNoLintFiles
-);
+// buildConfig.jsLintFiles = [].concat(
+//   buildConfig.jsFiles,
+//   buildConfig.jsNoLintFiles
+// );
 
 /** @param {Array} buildConfig.generateClientMoveFiles */
 buildConfig.generateClientMoveFiles = [].concat(
+  buildConfig.cssClientFiles,
   buildConfig.jadeClientFiles,
   buildConfig.jsClientFiles
 );
 
 /** @param {Array} buildConfig.generateServerMoveFiles */
 buildConfig.generateServerMoveFiles = [].concat(
-  ['./source/bin/www'],
+  ['bin/www'],
   buildConfig.htmlServerFiles,
   buildConfig.jadeServerFiles,
   buildConfig.jsServerFiles

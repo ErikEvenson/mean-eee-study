@@ -6,6 +6,7 @@ module.exports = function(gulp, config) {
   require('./generate')(gulp, config);
   require('./lint')(gulp, config);
   require('./server')(gulp, config);
+  require('./templates')(gulp, config);
   require('./wiredep')(gulp, config);
   return gulp;
 };

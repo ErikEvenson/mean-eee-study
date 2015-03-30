@@ -7,10 +7,13 @@
 
 module.exports = function(gulp, config) {
   var
-    bower = require('gulp-bower');
+    bower = require('gulp-bower'),
+    path = require('path');
 
   gulp.task('bower', function() {
-    return bower(config.build.bowerDirectory)
-      .pipe(gulp.dest(config.build.bowerDirectory));
+    var bowerDirectory = path.join(config.build.generated, config.build.bowerDirectory);
+
+    return bower(bowerDirectory)
+      .pipe(gulp.dest(bowerDirectory));
   });
 };

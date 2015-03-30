@@ -11,7 +11,7 @@ module.exports = function(gulp, config) {
     server = require('gulp-develop-server');
 
   var
-    app = path.join(config.build.basepath, 'generated/bin/www');
+    app = path.join(config.build.generated, 'bin/www');
 
   gulp.task('server:restart', function() {
     gulp.watch([app], server.restart);

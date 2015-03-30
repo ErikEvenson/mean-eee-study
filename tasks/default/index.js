@@ -25,10 +25,9 @@ module.exports = function(gulp, config) {
   });
 
   gulp.task('default', ['server:start'],
-  // gulp.task('default', ['browserify', 'wiredep', 'server:start'],
     function() {
       var watcher = gulp.watch(
-        ['./source/**/*'],
+        [path.join(config.build.source, '**/*')],
         ['generate', 'server:restart']
       );
 

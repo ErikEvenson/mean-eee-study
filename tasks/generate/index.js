@@ -18,20 +18,32 @@ module.exports = function(gulp, config) {
 
   gulp.task('generate:clean', [], function(cb) {
     del([
-      config.build.generated + '*'
+      path.join(config.build.generated, '*')
     ], cb);
   });
 
-  gulp.task('generate:client', ['browserify'], function(cb) {
+  gulp.task('generate:client', ['browserify'], function() {
   });
 
   gulp.task('generate:client:moveFiles', function() {
+    var browserifyFiles = [];
+
+    _.each(config.build.browserifyFiles, function(file) {
+      browserifyFiles.push(path.join(config.build.source, file));
+    });
+
     var condition = function(file) {
-      if (_.contains(config.build.browserifyFiles, file.path)) { return true; }
+      if (_.contains(browserifyFiles, file.path)) { return true; }
       else { return false; }
     };
 
-    return gulp.src(config.build.generateClientMoveFiles, {base: config.build.source})
+    var files = []
+
+    _.each(config.build.generateClientMoveFiles, function(file) {
+      files.push(path.join(config.build.source, file));
+    });
+
+    return gulp.src(files, {base: config.build.source})
       // Rename any files to be browserified by postpending a '_'.
       .pipe(gulpif(condition, rename(function(path) {
         path.basename += '_';
@@ -41,7 +53,13 @@ module.exports = function(gulp, config) {
   });
 
   gulp.task('generate:server:moveFiles', ['wiredep'], function() {
-    return gulp.src(config.build.generateServerMoveFiles, {base: config.build.source})
+    var files = []
+
+    _.each(config.build.generateServerMoveFiles, function(file) {
+      files.push(path.join(config.build.source, file));
+    });
+
+    return gulp.src(files, {base: config.build.source})
       .pipe(newer(config.build.generated))
       .pipe(gulp.dest(config.build.generated));
   });

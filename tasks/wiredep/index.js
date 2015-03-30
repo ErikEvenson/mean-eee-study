@@ -7,7 +7,9 @@
 
 module.exports = function(gulp, config) {
   var
-    jade = require('gulp-jade');
+    _ = require('underscore'),
+    jade = require('gulp-jade'),
+    rename = require("gulp-rename");
 
   /*
    * Wire up bower dependencies.
@@ -16,10 +18,16 @@ module.exports = function(gulp, config) {
     var LOCALS = {};
     var wiredep = require('wiredep').stream;
 
-    return gulp.src(config.build.wiredepFiles, {base: './source'})
+    var files = []
+
+    _.each(config.build.wiredepFiles, function(file) {
+      files.push(path.join(config.build.source ,file));
+    });
+
+    return gulp.src(files, {base: './source'})
       .pipe(wiredep({
         bowerJson: require(path.join(config.build.basepath, './bower.json')),
-        directory: path.join(config.build.generated, 'public/bower_components/'),
+        directory: path.join(config.build.generated, config.build.bowerDirectory),
         ignorePath: /(\.\.\/)*generated\/public/
       }))
       .pipe(jade({locals: LOCALS, pretty: true}))
