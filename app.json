@@ -1,0 +1,29 @@
+{
+  "name": "mean-eee-study",
+
+  "addons": [
+    "mongolab:sandbox"
+  ],
+
+  "description": "mean-eee-study description",
+
+  "env": {
+    "NODE_ENV": "staging"
+  },
+
+  "keywords": [
+    "3E Enterprises, LLC",
+    "mongodb",
+    "node"
+  ],
+
+  "logo": "https://dl.dropboxusercontent.com/u/6779408/3E%20Enterprises/3E.png",
+  "repository": "https://github.com/ErikEvenson/mean-eee-study",
+
+  "scripts": {
+    "postdeploy": "echo 'Deployed'"
+  },
+
+  "success_url": "/",
+  "webiste": "https://example.com/"
+}

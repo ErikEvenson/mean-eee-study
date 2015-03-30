@@ -73,6 +73,13 @@ buildConfig = {
     'server/**/*.js'
   ],
 
+  // miscFiles is an array of sources that should be sent to the server.
+  miscFiles: [
+    'app.json',
+    'package.json',
+    'Procfile'
+  ],
+
   // source is the path to the source directory
   source: path.join(__dirname, '../source/'),
 
@@ -105,15 +112,15 @@ buildConfig.jsFiles = [].concat(
 //   buildConfig.jsNoLintFiles
 // );
 
-/** @param {Array} buildConfig.generateClientMoveFiles */
-buildConfig.generateClientMoveFiles = [].concat(
+/** @param {Array} buildConfig.clientMoveFiles */
+buildConfig.clientMoveFiles = [].concat(
   buildConfig.cssClientFiles,
   buildConfig.jadeClientFiles,
   buildConfig.jsClientFiles
 );
 
-/** @param {Array} buildConfig.generateServerMoveFiles */
-buildConfig.generateServerMoveFiles = [].concat(
+/** @param {Array} buildConfig.serverMoveFiles */
+buildConfig.serverMoveFiles = [].concat(
   ['bin/www'],
   buildConfig.htmlServerFiles,
   buildConfig.jadeServerFiles,

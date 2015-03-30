@@ -39,7 +39,7 @@ module.exports = function(gulp, config) {
 
     var files = []
 
-    _.each(config.build.generateClientMoveFiles, function(file) {
+    _.each(config.build.clientMoveFiles, function(file) {
       files.push(path.join(config.build.source, file));
     });
 
@@ -55,9 +55,13 @@ module.exports = function(gulp, config) {
   gulp.task('generate:server:moveFiles', ['wiredep'], function() {
     var files = []
 
-    _.each(config.build.generateServerMoveFiles, function(file) {
+    _.each(config.build.serverMoveFiles, function(file) {
       files.push(path.join(config.build.source, file));
     });
+
+    // _.each(config.build.miscFiles, function(file) {
+    //   files.push(path.join(config.build.source, '..', file));
+    // });
 
     return gulp.src(files, {base: config.build.source})
       .pipe(newer(config.build.generated))
